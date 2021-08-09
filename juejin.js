@@ -53,3 +53,5 @@ function autoDraw() {
       }
     )
 }
+
+autoSign()
