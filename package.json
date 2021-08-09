@@ -1,0 +1,16 @@
+{
+  "name": "juejin_auto.js",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "juejin": "node juejin.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.21.1",
+    "koa": "^2.13.1"
+  }
+}
