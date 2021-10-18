@@ -32,7 +32,6 @@ function autoSign() {
 }
 
 // 抽奖
-
 function autoDraw() {
   axios
     .post(
