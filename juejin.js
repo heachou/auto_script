@@ -1,18 +1,17 @@
 const axios = require('axios')
-const fs = require('fs')
-const path = require('path')
-const cookie = fs.readFileSync(path.resolve(__dirname, './cookie.conf'), 'utf8')
+
+const cookie = process.env.JUEJIN_COOKIE
+
+const PUSH_KEY = process.env.PUSH_KEY
 
 const url = 'https://api.juejin.cn/growth_api/v1/check_in'
 
-const fangtangUrl = `https://sctapi.ftqq.com/SCT115237TL3pTqV2pON6gjzhEmOZfKC6F.send`
+const fangtangUrl = `https://sctapi.ftqq.com/${PUSH_KEY}.send`
 
 // 签到
-function autoSign() {
-  axios
-    .post(
-      url,
-      {},
+async function autoSign() {
+  return axios
+    .post(url,{},
       {
         headers: {
           cookie,
@@ -21,11 +20,6 @@ function autoSign() {
     )
     .then(
       (res) => {
-        const { err_no } = res.data
-        if (err_no === 0) {
-          autoDraw()
-        }
-        console.log(res.data)
         return res.data
       },
       (err) => {
@@ -33,13 +27,12 @@ function autoSign() {
         return err
       }
     ).then(res => {
-      axios.post(`${fangtangUrl}?title=${encodeURI("掘金签到：" + JSON.stringify(res.data ? res.data : res))}&desp=${encodeURI(JSON.stringify(res))}`)
     })
 }
 
 // 抽奖
 function autoDraw() {
-  axios
+  return axios
     .post(
       `https://api.juejin.cn/growth_api/v1/lottery/draw`,
       {},
@@ -51,7 +44,7 @@ function autoDraw() {
     )
     .then(
       (res) => {
-        console.log(res.data)
+        return res.data
       },
       (err) => {
         console.log(err)
@@ -59,4 +52,7 @@ function autoDraw() {
     )
 }
 
-autoSign()
+module.exports = {
+  autoSign,
+  autoDraw
+}

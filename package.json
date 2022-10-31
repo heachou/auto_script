@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "juejin": "node juejin.js"
+    "start": "node index.js"
   },
   "keywords": [],
   "author": "",
