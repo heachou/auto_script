@@ -2,7 +2,6 @@ const axios = require('axios')
 
 const cookie = process.env.JUEJIN_COOKIE
 
-const PUSH_KEY = process.env.PUSH_KEY
 
 const url = 'https://api.juejin.cn/growth_api/v1/check_in'
 

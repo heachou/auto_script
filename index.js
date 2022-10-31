@@ -1,6 +1,7 @@
 const {autoDraw,autoSign} = require('./juejin')
 const axios = require('axios')
 
+const PUSH_KEY = process.env.PUSH_KEY
 const fangtangUrl = `https://sctapi.ftqq.com/${PUSH_KEY}.send`
 
 const result = []
