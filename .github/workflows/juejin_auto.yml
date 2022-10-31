@@ -8,6 +8,10 @@ on:
   schedule:
     - cron: '0 2 * * *'
 
+env:
+  PUSH_KEY: ${{ secrets.PUSH_KEY }}
+  JUEJIN_COOKIE: ${{ secrets.JUEJIN_COOKIE }}
+
 # 任务
 jobs:
   juejin-auto-signin:
