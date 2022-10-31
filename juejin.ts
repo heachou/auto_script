@@ -1,4 +1,4 @@
-const axios = require('axios')
+import axios from 'axios'
 
 const cookie = process.env.JUEJIN_COOKIE
 
@@ -7,7 +7,8 @@ const url = 'https://api.juejin.cn/growth_api/v1/check_in'
 
 
 // 签到
-async function autoSign() {
+export async function autoSign():Promise<any> {
+  
   return axios
     .post(url,{},
       {
@@ -18,18 +19,18 @@ async function autoSign() {
     )
     .then(
       (res) => {
+        console.log('签到',res.data)
         return res.data
       },
       (err) => {
         console.log(err)
-        return err
+        return {"error": '签到失败'}
       }
-    ).then(res => {
-    })
+    )
 }
 
 // 抽奖
-function autoDraw() {
+export function autoDraw():Promise<any> {
   return axios
     .post(
       `https://api.juejin.cn/growth_api/v1/lottery/draw`,
@@ -42,15 +43,14 @@ function autoDraw() {
     )
     .then(
       (res) => {
+        console.log('抽奖',res.data)
         return res.data
       },
       (err) => {
-        console.log(err)
+        console.log('抽奖',err)
+        return {"error": '抽奖失败'}
       }
     )
 }
 
-module.exports = {
-  autoSign,
-  autoDraw
-}
+
