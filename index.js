@@ -1,4 +1,5 @@
 const {autoDraw,autoSign} = require('./juejin')
+const axios = require('axios')
 
 const result = []
 
