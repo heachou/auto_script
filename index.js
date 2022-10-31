@@ -1,6 +1,8 @@
 const {autoDraw,autoSign} = require('./juejin')
 const axios = require('axios')
 
+const fangtangUrl = `https://sctapi.ftqq.com/${PUSH_KEY}.send`
+
 const result = []
 
 async function sendMsg(){

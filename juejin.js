@@ -6,7 +6,6 @@ const PUSH_KEY = process.env.PUSH_KEY
 
 const url = 'https://api.juejin.cn/growth_api/v1/check_in'
 
-const fangtangUrl = `https://sctapi.ftqq.com/${PUSH_KEY}.send`
 
 // 签到
 async function autoSign() {
